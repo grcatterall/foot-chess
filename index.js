@@ -103,6 +103,10 @@ wss.on('connection', (ws) => {
     switch (data.type) {
       case 'join':
         playerName = data.name || 'Player';
+        if (data.password && data.password !== 'ass') {
+            ws.send(JSON.stringify({ type: 'error', message: 'Invalid password.' }));
+            return;
+        }
         players.push({ id: playerId, name: playerName, ws });
         console.log(`${playerName} joined.`);
         sendPlayerList();

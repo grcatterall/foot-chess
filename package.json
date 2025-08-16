@@ -2,7 +2,10 @@
   "name": "foot-chess",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://grcatterall.github.io/foot-chess/",
   "scripts": {
+    "predeploy": "mkdir -p gh-pages-temp && cp index.html gh-pages-temp/",
+    "deploy": "gh-pages -d gh-pages-temp && rm -rf gh-pages-temp",
     "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +14,8 @@
   "description": "",
   "dependencies": {
     "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
